@@ -1,6 +1,7 @@
 # IT Manager : Umutcan Yalçın
 # Developer  : Ege ARIK
 
+
 # Raynet Junior Tech Glossary 
 
 tech_dictionary = { 
