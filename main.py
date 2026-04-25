@@ -1,4 +1,4 @@
-
+# Umutcan Yalçın
 # Raynet Junior Tech Glossary 
 
 tech_dictionary = { 
