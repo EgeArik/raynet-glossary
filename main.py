@@ -1,5 +1,5 @@
-
 # Developer  : Ege ARIK
+
 
 # Raynet Junior Tech Glossary 
 
