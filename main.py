@@ -1,7 +1,9 @@
 # Developer  : Ege ARIK
+
 # Raynet Junior Tech Glossary 
 
 tech_dictionary = { 
+
 "Python": "A high-level programming language.", 
 "Git": "A distributed version control system.",
 "Firewall":"Network analyze and protection device. ",
