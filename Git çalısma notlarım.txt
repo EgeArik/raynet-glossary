@@ -1,0 +1,237 @@
+Git Nedir?
+(uyarı kodları belirtmek için başına ** koydum bunları git bash kısmına yazma)
+
+Senin yazdığın her kodun bir kopyasını alır. Oyunlardaki save alma mantğıla aynı :D
+
+Kendinde albilirsin ancak karmaşık olur Bu git seni karmaşık sistemlerden kurtarır.
+Sen bir save aldığında ;
+versiyonun ismi
+tarih
+kayıt alan kulanici gibi şeylerde kaydedilir.
+
+Şimdi Giti indirdim.
+Aram kısmına Git yazınca 3 tane farklı gir çıkıyor.
+
+Git Bash Linuxa benzer bir arayüz
+Git GUI (Graficcial user interface) ==> Komut Satırı kullanmadan gitin kullanımı için
+git CMD Windowstaki cmd ile aynı
+
+dersleri 3'üyelde yapabilirsin
+
+---------------------------------------------
+Git bashi açıp örneğin;
+
+ ** git --version
+
+Çıktı: git version 2.54.0.windows.1
+
+
+yazarsan bize gitin versiyonunu verir.
+-----------------------CONFİG KISMI--------------------------
+
+eğer yapılandırılmış ayarlarımızı görmek istersek :
+
+ ** git config --list
+
+komutu çalıştırınca
+
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=schannel
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+
+çıktısı alıyoruz.
+
+Göründüğü üzere user.name ya da user.email bilgileri yer almıyor bunları yapılandırmamız gerek.
+
+
+ ** git config --global user.name "Ege Arik"
+ ** git config --global user.email "egearik4143@gmail.com"
+
+Burada benim kullanıcı adım Ege Arik ve emailim bu diyoruz.
+Bundan sonra tekra git config --list diyerek kontrol edebilirsin.
+
+ ** git config --global user.name
+ ** git config --global user.email
+
+Çıktı: Ege Arik
+sadece bu komutu çalıştırdığımız da ise artık bize kullanıcı adını vermeke. İStersersen tekrardan üncelleyeblirsin …
+
+
+
+-----------------KOMUTLAR-----------------------------------------------
+
+** ls
+ 
+içinde bulunduğmuz klasörün dosya ve dizinlerine erişebiliyoruz. (İsimlerini yazar)
+Eğer gizli ögeleri de görüntelemek istersen **ls -a yaz
+
+
+** cd
+
+dizinler arasıdnda geçişler yapılabilir. cd Desktop yazdığın zman seni destop klasörünün içine sokar.
+
+eğer geri gitmek istersen ** cd .. yaz
+
+
+** pwd
+içinde bulunduğumuz dosyanın uzantsını verir. ÖRNK: /c/Users/Ege/Desktop
+
+
+** mkdir dizin
+pythonda da vardı klasör oluşturuşun. dizin yazan kısma oluşturacağın dosyaya ad verirsin
+
+
+** touch dosyaadi.uzantı
+dosya oluşturur. touch yaz dosya adı veuzantı belirt. ÖRNK: touch ege.txt
+(tabi önce oluşturmak istediğin yere **cd komutuyla girmen gerekir)
+
+** vi dosyaadi.uzantı
+eğer oluşturduğumuz dosyaya ERİŞİP DEĞİŞTİRMEK İSTERSEK bu komutu kullanmalıyız.
+daha sonra yazacaksan i tuşuna bas. Alttaki yazı Insert olarak değişecek Pythondaki aynı mantık 
+çıkmak için önce esc bas ve : koy 
+sonra wq yazman gerek. 
+w - write
+q -quiten gelir (Pythondaki aynı mantık)
+
+enter bas ve kapanır.
+
+** rm dosyaadi.uzantisi
+Dosyayı siler
+
+**rm -r dizinadi
+
+Dizini ve izinin içindeki her şeyi siler. 
+------------------------------------------------------------------------------
+
+**git init 
+
+O klasörü “Git takip ediyor” hale getirir.  Yerel bir Git deposu (repository) oluşturmuş oluruz.
+İlk repositorymi ana ekranda daha önceden oluşturduğum ege klasörüne oluşturuyorum.(tabi daha öncesinde cd ile klasöre gir)
+
+çalıştırdığında oluşturur ve ls -a yaparsan .git olarak görebilirsin.
+
+.git deposunu oluşturmadığın herhangi bir dizinin içerisine başka bir git kodu örneğin **git add yazamazsın!!!
+
+----------------------------------------------------------------------------
+
+Staging Area ( Git Add & Git Status ) 
+bu video güzel anlatıyor :
+https://www.youtube.com/watch?v=KnJdYBxAsNM&list=PLHN6JcK509bOrevTCFrSMeAfBtuib4Gpg&index=7
+
+Biz git ile bir dosya oluşturmak istediğimizde önce local repository'ye ulaştırmamz gerek
+Local repositorye bir dosya oluşturmadan önce dosyalarımızı  staging areaya taşıyoruz
+
+stagng bir indexleme alanıdır local repository bu alandan gelen dosyaları kabul eder.
+
+**git status
+
+Bu komt bizim local repositorye taşıdığımız dosyalarla çalışma alanımız arasındaki farklılıkları gösterir
+hangi dosya değişmiş
+hangisi eklenmemiş
+hangisi commit’e hazır sana bunu söyler
+
+Eğer .git dosyası oluşturmadıysan(git init komutu ile) git status komutunu çalıştırmazsın
+
+şimdi 2 tane terminal açtım ve birinden masaüstümdeki ege adlı klasördeyken birinden ise workarea diye yeni bir klasör oluşturttum
+ege klasöründe daha önceden git init komutu çalıştırığım için halihazırda var zaten. ama workareada yok. 
+
+* Eğer workareada **git status çalıştırırsam:
+
+fatal: not a git repository (or any of the parent directories): .git 
+
+Fatal error verir ve local repository yok bu yüzden karşılaştıramıyorum der.
+bundan sonra burda da git init çalıştır ve depo kur.
+--------------------
+
+* Eğer ege dizininde **git status çalıştırırsam:
+ On branch master
+
+No commits yet
+
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Burada yani master branch altında çalıştığını , her hangi bir dosyanın commit için hazır olmadığını falan söylüyor
+zaten dosyamız boş. ama workarea kısmımız boş durmaasın diye şimdi oraya 2 tane dosya oluşturucam. ve de birde burda **git status çalıştıralım
+
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        index.html
+        style.css
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Gibi bir çıktı verdi. 
+
+
+-------Yani biz dosyalrımızı staging areaya taşıdığımızda git kendi algoritmalarıyla gönderdiğimiz dosyalarr üzerinde br ndexleme yapıyor.
+Bu indexleme bizim bu dosyaları local repostoryde çalıştımamız için gerekliymiş.
+
+ne yalan söyleyeyim bu kısmı bende anlamadım.
+kıscası  git add senin stage area ya dosyaları almanı sağlıyor. commmite dahil ediyor
+
+şimdi ege adlı klasörün altında bir dosya oluşturup sonra onu **git add komutuyla staging areaya taşıyacağım.
+
+yazi.txt oluşturdum
+**git add yazi.txt
+stating areada şuan 
+geri almak istersen:
+
+git rm --cached yazi.txt yapıyorsun bro
+herhangi bir izleme şeyi yok demektir
+
+**git add . 
+hepsini izlemeye alır.
+----------------------------------------------
+
+Dosyaları stating areada local repositorye kaydetmek için:
+
+**git commit kullanılır.
+**git commit -m "ilk commit" 
+burada bir adet mesaj bıraktık ne olduğunu belirttik. Bunu yazıp entere bastığımızda 
+
+[master (root-commit) 5255fba] ilk commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 yazi.txt
+
+gibi bir çıktı alırız. olmuştur bro
+---------------------------------------------------------
+** git log yazarak 
+
+local repositoryde kaydedilen (commit edilen dosyları kimin yaptığı ne zaman yapıldığı vs. görülür)
+
+-----------------------------------------------------------
+
+şimdi workarea kısmındaki html ve css dosyasını zaten add ile staging areaya almıştık. Şimdi html dosyasını değiştirelim ve 
+daha sonra tekrar **git status komutu çalıştıralım bakalım noluyo
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   index.html
+        new file:   style.css
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+gördüğün gibi 2 tane commit edilebilecek var diyo ama bunlardan index.html güncellendi diyo
+
+
+
+
+
